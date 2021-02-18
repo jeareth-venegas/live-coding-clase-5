@@ -95,7 +95,7 @@ const parqueoSinEspacio = (espaciosLibres, celdasVacias) => {
     if(celdasVacias.length === 0){
     button.disabled = true;
     input.disabled = true;
-    espaciosLibres.innerHTML = "El parque está lleno, no hay espacio disponible.";
+    espaciosLibres.innerHTML = `El parqueo está lleno. Tiene ${celdasVacias.length}. No hay espacio disponible.`;
     espaciosLibres.style.color = ('red');
     }else{
     espaciosLibres.innerHTML = `${celdasVacias.length}`;
