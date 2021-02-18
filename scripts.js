@@ -88,9 +88,22 @@ const crearElementos = (hora, placa) => {
   celdaVacia.appendChild(vehiculoIcono);
   celdaVacia.appendChild(placaNuevoIngreso);
   celdaVacia.appendChild(horaNuevoIngreso);
-  celdaVacia.appendChild(botonEliminar);
+  celdaVacia.appendChild(botonEliminar); 
 };
-
+const parqueoSinEspacio = (espaciosLibres, celdasVacias) => {
+    let button = document.querySelector('button');
+    if(celdasVacias.length === 0){
+    button.disabled = true;
+    input.disabled = true;
+    espaciosLibres.innerHTML = "El parque está lleno, no hay espacio disponible.";
+    espaciosLibres.style.color = ('red');
+    }else{
+    espaciosLibres.innerHTML = `${celdasVacias.length}`;
+    espaciosLibres.style.color = ('green');
+    button.disabled = false;
+    input.disabled = false;
+    }
+  }
 const actualizarMensaje = () => {
   // Guardar el b dentro del h3
   const espaciosLibres = document.querySelector("h3 b");
@@ -100,7 +113,13 @@ const actualizarMensaje = () => {
 
   // Agregar la cantidad de celdas vacias a `espaciosLibres`
   espaciosLibres.innerText = celdasVacias.length;
+
+  parqueoSinEspacio(espaciosLibres, celdasVacias)
 };
+
+//mensaje de que el parqueo está lleno
+
+
 
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -119,6 +138,4 @@ formulario.addEventListener("submit", (e) => {
   input.value = "";
 });
 
-//mensaje parqueo lleno
-
-//deshabilitar espacios
+//deshabilitar espacios .disabled con true o false.
